@@ -58,17 +58,3 @@ html = """<!doctype html>
   </main>
 </body>
 </html>
-"""
-import os, zipfile, textwrap, pathlib, io
-
-base_dir = "/mnt/data/eu-ti-amu-site"
-os.makedirs(base_dir, exist_ok=True)
-index_path = os.path.join(base_dir, "index.html")
-with open(index_path, "w", encoding="utf-8") as f:
-    f.write(html)
-
-zip_path = "/mnt/data/eu-ti-amu-site.zip"
-with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
-    z.write(index_path, arcname="index.html")
-
-index_path, zip_path
